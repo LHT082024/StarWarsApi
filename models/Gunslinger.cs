@@ -9,6 +9,7 @@ namespace StarWarsApi.models
     {
         public string? Name { get; set; }
         public string? ChImg { get; set; }
+        public string? Bio { get; set; }
         public int Id { get; set; }
         public string? GunImg { get; set; }
     }
