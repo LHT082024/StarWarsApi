@@ -6,21 +6,29 @@ using StarWarsApi.models;
 namespace StarWarsApi.controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ForceUserController : ControllerBase
     {
-        private readonly PeopleContext _context;
-
-        public ForceUserController(PeopleContext context)
+        private static List<ForceUsers> forceUsers = new List<ForceUsers>()
         {
-            _context = context;
-        }
+            new ForceUsers{Name = "Starkiller", ForcePower1 = "ForceLightning"}
+        };
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IEnumerable<ForceUsers> Get()
         {
-            var forceUsers = await _context.forceUsers.ToListAsync();
-            return Ok(forceUsers);
+            return forceUsers;
         }
+        // private readonly PeopleContext _context;
+
+        // public ForceUserController(PeopleContext context)
+        // {
+        //     _context = context;
+        // }
+        // public async Task<IActionResult> Get()
+        // {
+        //     var forceUsers = await _context.forceUsers.ToListAsync();
+        //     return Ok(forceUsers);
+        // }
     }
 }
