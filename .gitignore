@@ -1,0 +1,8 @@
+appsettings.json
+appsettings.Development.json
+launchSettings.json
+StarWarsApi.http
+StarWarsApi.sln
+StarWarsApi.csproj
+/bin
+/obj
