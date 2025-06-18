@@ -3,6 +3,7 @@ namespace StarWarsApi.models
     public class ForceUsers
     {
         public string? Name { get; set; }
+        public string? ChImg { get; set; }
         public int Id { get; set; }
         public string? LightsaberImg { get; set; }
         public string? ForcePower1 { get; set; }
