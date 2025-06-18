@@ -8,8 +8,8 @@ namespace StarWarsApi.models
               : base(options)
         {
         }
-        public DbSet<Civilian> Civilians { get; set; } = null!;
-        public DbSet<ForceUsers> ForceUsers { get; set; } = null!;
-        public DbSet<Gunslinger> Gunslingers { get; set; } = null!;
+        public DbSet<Civilian> civilians { get; set; } = null!;
+        public DbSet<ForceUsers> forceUsers { get; set; } = null!;
+        public DbSet<Gunslinger> gunslingers { get; set; } = null!;
     }
 }
