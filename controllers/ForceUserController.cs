@@ -46,8 +46,16 @@ namespace StarWarsApi.controllers
                 return NotFound();
             }
             return Ok(forceUsers);
-
         }
 
+        //add a new forceuser
+        [HttpPost]
+        public async Task<IActionResult> AddForceUser([FromBody] ForceUsers forceUsers)
+        {
+            _context.forceUsers.Add(forceUsers);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetForceUserById), new { id = forceUsers.Id }, forceUsers);
+        }
     }
 }
