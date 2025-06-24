@@ -70,5 +70,19 @@ namespace StarWarsApi.controllers
             await _context.SaveChangesAsync();
             return Ok(currentForceUser);
         }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteForceUser(int id)
+        {
+            var forceUserToRemove = await _context.forceUsers.FindAsync(id);
+            if (forceUserToRemove == null)
+            {
+                return NotFound($"sorry a force user with {id} as id could not be found");
+            }
+
+            _context.forceUsers.Remove(forceUserToRemove);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
