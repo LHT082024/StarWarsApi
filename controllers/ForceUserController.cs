@@ -26,10 +26,21 @@ namespace StarWarsApi.controllers
             return Ok(forceUsers);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetForceuserById(int id)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetForceUserById(int id)
         {
             var forceUsers = await _context.forceUsers.FirstOrDefaultAsync(a => a.Id == id);
+            if (forceUsers == null)
+            {
+                return NotFound();
+            }
+            return Ok(forceUsers);
+        }
+
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetForceUserByName(string name)
+        {
+            var forceUsers = await _context.forceUsers.FirstOrDefaultAsync(a => a.Name == name.ToLower());
             if (forceUsers == null)
             {
                 return NotFound();
