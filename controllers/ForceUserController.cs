@@ -17,11 +17,26 @@ namespace StarWarsApi.controllers
         }
 
 
+
+        //retriving information from the database
         [HttpGet]
         public async Task<IActionResult> GetForceusers()
         {
             var forceUsers = await _context.forceUsers.ToListAsync();
             return Ok(forceUsers);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetForceuserById(int id)
+        {
+            var forceUsers = await _context.forceUsers.FirstOrDefaultAsync(a => a.Id == id);
+            if (forceUsers == null)
+            {
+                return NotFound();
+            }
+            return Ok(forceUsers);
+
+        }
+
     }
 }
