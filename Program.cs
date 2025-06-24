@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using StarWarsApi.models;
 
 var builder = WebApplication.CreateBuilder(args);
-// builder.Services.AddDbContext<PeopleContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<PeopleContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
