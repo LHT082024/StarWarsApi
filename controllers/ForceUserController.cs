@@ -48,7 +48,7 @@ namespace StarWarsApi.controllers
             return Ok(forceUsers);
         }
 
-        //add a new forceuser
+        //Method to add a new forceuser
         [HttpPost]
         public async Task<IActionResult> AddForceUser([FromBody] ForceUsers forceUsers)
         {
@@ -56,6 +56,19 @@ namespace StarWarsApi.controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetForceUserById), new { id = forceUsers.Id }, forceUsers);
+        }
+
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> EditForceUser(int id, [FromBody] ForceUsers forceUsers)
+        {
+            var currentForceUser = await _context.forceUsers.FindAsync(id);
+            if (currentForceUser == null)
+            {
+                return NotFound($"the force user with id {id} does not exist");
+            }
+            await _context.SaveChangesAsync();
+            return Ok(currentForceUser);
         }
     }
 }
