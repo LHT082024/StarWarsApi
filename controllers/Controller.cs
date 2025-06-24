@@ -16,7 +16,9 @@ namespace StarWarsApi.controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Get()
+
+        [HttpGet]
+        public async Task<IActionResult> GetForceusers()
         {
             var forceUsers = await _context.forceUsers.ToListAsync();
             return Ok(forceUsers);
